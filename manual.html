@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Completo de Operação e Controles - Mednafen</title>
+    <style>
+        :root {
+            --bg-color: #1a1a1a;
+            --container-bg: #2d2d2d;
+            --text-color: #e0e0e0;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --kbd-bg: #444;
+            --kbd-text: #fff;
+            --border-color: #444;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: var(--container-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            color: #fff;
+            margin-top: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #f39c12;
+            margin-top: 20px;
+        }
+        p, ul, ol {
+            margin-bottom: 15px;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        kbd {
+            background-color: var(--kbd-bg);
+            color: var(--kbd-text);
+            border: 1px solid #666;
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 0.9em;
+            font-family: monospace;
+            box-shadow: 0 2px 0 #222;
+        }
+        .highlight {
+            background-color: rgba(59, 130, 246, 0.2);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .important {
+            background-color: rgba(231, 76, 60, 0.2);
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.85em;
+            color: #888;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Manual de Operação e Configuração<br>Elementista Vault</h1>
+    <p>Este guia reúne de forma simples e direta os comandos essenciais que você realmente precisa usar enquanto executa jogos no emulador.</p>
+    <p>Para jogar mega drive ou o super nintendo - deixei as teclas A S D, Z X C = botões de ação, ENTER =  start, BARRA DE ESPAÇO =  select</p>
+    <p>Para jogar atari 2600 as teclas padrão é F1 = para dois players, F2 = start, BARRA DE ESPAÇO = botão de ação</p>
+    <p>As setas direcionais do teclado serve para movimentos, para cima, para baixo, para a esquerda, para a direita.</p>
+    <p>Abaixo deixo um mini manual para configurar de acordo com o que você queira.</p>
+
+    <h2>1. Comandos Vitais de Tela e Ajuda</h2>
+    <div class="grid">
+        <div class="card">
+            <h3><kbd>Alt</kbd> + <kbd>Enter</kbd></h3>
+            <p>Alterna instantaneamente entre o modo <strong>Tela Cheia (Fullscreen)</strong> e o modo Janela.</p>
+            <h3><kbd>Alt</kbd> + <kbd>F4</kbd></h3>
+            <p>Fecha instantaneamente o modo <strong>Tela Cheia (Fullscreen)</strong> ou modo Janela. (resumindo fecha o game)</p>
+        </div>
+        <div class="card">
+            <h3><kbd>F1</kbd></h3>
+            <p>Abre a <strong>Documentação de Ajuda Integrada</strong> direto na tela do emulador. Mostra a lista completa de atalhos e funções em tempo real.</p>
+        </div>
+        <div class="card">
+            <h3><kbd>Esc</kbd></h3>
+            <p><strong>Fecha e sai</strong> imediatamente do emulador de forma segura.</p>
+        </div>
+    </div>
+
+    <h2>2. Como Configurar e Mapear os Controles</h2>
+    <p>O emulador salva os controles de forma individual para cada videogame simulado. Siga estes passos simples com o jogo já aberto:</p>
+    <ol>
+        <li>Pressione <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd> para iniciar a configuração do <strong>Player 1</strong> (use <kbd>2</kbd>, <kbd>3</kbd>, etc., para outros jogadores).</li>
+        <li>Olhe na parte inferior da tela: o emulador mostrará o nome do botão original do console (ex: <i>UP</i>, <i>DOWN</i>, <i>BUTTON A</i>).</li>
+        <li>Aperte o botão correspondente no seu teclado ou controle físico <strong>duas vezes seguidas</strong> para confirmar.</li>
+        <li>Se quiser deixar um botão sem função (pular), aperte a tecla <kbd>F5</kbd>.</li>
+    </ol>
+
+    <div class="important">
+        <strong>Importante:</strong> Se errar ou o controle bugar, pressione <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> para <strong>limpar (limpar)</strong> todas as configurações e começar o mapeamento do zero.
+    </div>
+
+    <h2>3. Alternando Tipos de Controle (Analógico / 6 Botões)</h2>
+    <p>Alguns sistemas exigem a troca do tipo de dispositivo conectado (ex: ativar o analógico do PS1 ou mudar o controle do Mega Drive de 3 para 6 botões):</p>
+    <ul>
+        <li>Pressione <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>1</kbd> para rodar entre os tipos de periféricos disponíveis na porta do <strong>Player 1</strong>.</li>
+        <li>Continue apertando até que apareça a opção desejada na tela (ex: <span class="highlight">dualshock</span>, <span class="highlight">gamepad (6-button)</span>).</li>
+    </ul>
+
+    <h2>4. Outros Atalhos Essenciais para Jogadores</h2>
+    <ul>
+        <li><strong>Salvar Jogo Rápido (Save State):</strong> Pressione <kbd>F5</kbd> (salva no slot selecionado).</li>
+        <li><strong>Carregar Jogo Rápido (Load State):</strong> Pressione <kbd>F7</kbd> (recarrega do slot selecionado).</li>
+        <li><strong>Mudar Slot de Salvamento:</strong> Pressione as teclas numéricas de <kbd>0</kbd> a <kbd>9</kbd> para escolher slots diferentes.</li>
+        <li><strong>Reiniciar o Jogo (Reset):</strong> Pressione <kbd>F11</kbd>.</li>
+        <li><strong>Avanço Rápido (Fast Forward):</strong> Mantenha pressionada a tecla <kbd>`</kbd> (Crase/Til abaixo do Esc) para acelerar o jogo.</li>
+        <li><strong>Captura de Tela (Screenshot):</strong> Pressione <kbd>F12</kbd>.</li>
+    </ul>
+
+<!--
+<footer>
+        <p>Dica: Você também pode usar a interface gráfica <strong>Mednaffe</strong> para mapear esses comandos clicando nas abas específicas de cada console antes de abrir o jogo.</p>
+    </footer>
+    -->
+</div>
+
+</body>
+</html>

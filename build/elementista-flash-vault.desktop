@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Elementista Flash Vault
+Comment=Cofre portátil e minimalista para preservação de acervos locais em Flash Player e Retroemulação
+Exec=ElementistaFlashVault --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=icon
+Categories=Game;Emulator;
+StartupWMClass=ElementistaFlashVault
+MimeType=application/x-shockwave-flash;application/x-genesis-rom;

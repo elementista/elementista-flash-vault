@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementista Flash Vault</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #00ffcc;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        /* Menu Lateral Estilo Matrix */
+        #menu-lateral {
+            width: 320px;
+            border-right: 2px dashed #00ffcc;
+            padding-right: 15px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        #menu-lateral.oculto {
+            width: 0;
+            padding: 0;
+            border: none;
+            overflow: hidden;
+        }
+        h2 {
+            color: #ff9900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid #00ffcc;
+            padding-bottom: 5px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        h2:first-of-type { margin-top: 0; }
+        
+        /* Container de Redes Sociais no Topo do Menu */
+        .redes-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        .rede-btn {
+            flex: 1;
+            background: #161b22;
+            border: 1px solid #ff9900;
+            color: #ff9900;
+            padding: 8px 0;
+            text-align: center;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .rede-btn:hover {
+            background: #ff9900;
+            color: #0d1117;
+            box-shadow: 0 0 8px #ff9900;
+        }
+
+        .upload-btn {
+            background: #161b22;
+            border: 1px dashed #00ffcc;
+            color: #ff9900;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .upload-btn:hover { background: #00ffcc; color: #0d1117; box-shadow: 0 0 10px #00ffcc; }
+        input[type="file"] { display: none; }
+        #busca {
+            background: #161b22;
+            border: 1px solid #ff9900;
+            color: #00ffcc;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            outline: none;
+            width: 100%;
+            box-sizing: border-box;
+            display: none;
+        }
+        #busca:focus { box-shadow: 0 0 8px #ff9900; }
+        #lista-container { flex: 1; overflow-y: auto; padding-right: 5px; }
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { margin-bottom: 6px; display: flex; gap: 5px; }
+        .game-btn {
+            background: transparent;
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
+            padding: 8px 12px;
+            flex: 1;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .game-btn:hover { background: #00ffcc; color: #0d1117; font-weight: bold; }
+        .fav-btn {
+            background: transparent;
+            border: 1px solid #ff9900;
+            color: #ff9900;
+            cursor: pointer;
+            padding: 0 10px;
+            font-family: inherit;
+        }
+        .fav-btn:hover { background: #ff9900; color: #0d1117; }
+        /* Área Central do Jogo */
+        #conteudo-principal {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-left: 20px;
+            height: 100%;
+        }
+        #topo-controles {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            height: 35px;
+        }
+        #titulo-jogo { color: #ff9900; font-size: 1.3rem; font-weight: bold; margin: 0; }
+        .util-btn {
+            background: #161b22;
+            border: 1px solid #00ffcc;
+            color: #00ffcc;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            margin-left: 5px;
+        }
+        .util-btn:hover { background: #00ffcc; color: #0d1117; }
+        #player-container {
+            width: 100%;
+            height: calc(100% - 50px);
+            max-width: 1024px;
+            max-height: 768px;
+            border: 2px solid #00ffcc;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+            transition: transform 0.2s ease;
+        }
+        .placeholder-text { color: #555; font-size: 1.1rem; text-align: center; line-height: 1.6; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0d1117; }
+        ::-webkit-scrollbar-thumb { background: #00ffcc; border-radius: 3px; }
+    </style>
+</head>
+<body>
+
+    <div id="menu-lateral">
+        <h2>⚡ Conectar</h2>
+        <div class="redes-container">
+            <button class="rede-btn" onclick="abrirLink('https://github.com/elementista')">GitHub</button>
+            <button class="rede-btn" onclick="abrirLink('https://elementista.blogspot.com/')">Blog</button>
+            <button class="rede-btn" onclick="abrirLink('https://www.youtube.com/@elementista')">YouTube</button>
+
+        </div>
+
+<!--  <div style="color: #32CD32; font-family: monospace; font-weight: bold; text-align: center; font-size: 16px; margin-bottom: 15px; text-shadow: 0 0 5px #32CD32; background-color: #000000;">
+-->
+            <div style="color: #32CD32; font-family: monospace; font-weight: bold; text-align: center; font-size: 16px; margin-bottom: 15px; text-shadow: 0 0 5px #ff00ff; background-color: #000000;">
+    <br>Flash Player - Atari <br> Mega Drive - Super Nintendo<br><br>
+        </div>
+            
+        <input type="text" id="busca" placeholder="🔍 Filtrar acervo..." onkeyup="filtrarJogos()">
+        
+        <h2> Meu Acervo</h2>
+        <label class="upload-btn" id="label-pasta" for="input-pasta">📂 SELECIONAR PASTA DE JOGOS</label>
+      <!--  <input type="file" id="input-pasta" webkitdirectory directory multiple onchange="mapearPastaJogos(this.files)"> -->
+       <!-- <input type="file" id="input-pasta" webkitdirectory directory multiple onchange="mapearPastaJogosGlobal(this.files)"> -->
+       <input type="file" id="input-pasta" webkitdirectory directory multiple onchange="mapearPastaJogosGlobal(this.files); if(typeof window.mapearPastaAtariUniversal === 'function') window.mapearPastaAtariUniversal(this.files);">
+
+        <!-- <input type="text" id="busca" placeholder="🔍 Filtrar acervo..." onkeyup="filtrarJogos()"> -->
+        
+        <div style="background-color: #000000;" id="lista-container">
+            <h2>⭐ Favoritos</h2>
+            <ul id="lista-favoritos"></ul>
+            
+            <h2 id="tit-todos"> JOGOS CARREGADOS</h2>
+            <ul id="lista-jogos"></ul>
+        </div>
+    </div>
+
+    <div id="conteudo-principal">
+        <div id="topo-controles">
+            <button class="util-btn" onclick="alternarMenu()">📁 Menu</button>
+            <div id="titulo-jogo">/ FLASH VAULT</div>
+            <div>
+                <button class="util-btn" onclick="ajustarZoom(0.1)">🔍 +</button>
+                <button class="util-btn" onclick="ajustarZoom(-0.1)">🔍 -</button>
+                <button class="util-btn" onclick="ajustarZoom(0)">🔄 Reset</button>
+            </div>
+        </div>
+        <div id="player-container">
+            <div class="placeholder-text" id="status-tela">
+                [ TERMINAL AGUARDANDO DIRETÓRIO ]<br>
+                Abra uma pasta local para organizar os arquivos Flash e Consoles.
+            </div>
+        </div>
+    </div>
+
+    <!-- CARREGAMENTO ISOLADO CORRETO: Puxa o seu script separado sem sujar o HTML -->
+    <!-- <script src="script.js"></script> -->
+    <!-- <script src="script-para-flash.js"></script> -->
+    <script src="matrix.js"></script>
+    <script src="script-pesquisa.js"></script>
+    <script src="gamepad-autodetect.js"></script>
+    <script src="script-flash.js"></script>
+    <script src="script-bin.js"></script>
+    <!-- <script src="script-favoritos-core.js"></script> -->
+    <!-- <script src="script-atari.js"></script> -->    
+    <!-- Chamada do módulo complementar de detecção de Joysticks USB -->
+
+</body>
+</html>
+
