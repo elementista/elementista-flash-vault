@@ -1,6 +1,5 @@
-# elementista-flash-vault
-Cofre portátil e minimalista para preservação de acervos locais em Flash Player e retroemulação. Desenvolvido em Electron, o Elementista Flash Vault integra emuladores nativos de consoles clássicos (Atari, Mega Drive, SNES) e um player para arquivos swf, com gerenciamento de favoritos, suporte a dois jogadores e interface customizada.
 # ⚡ Elementista Flash Vault
+Cofre portátil e minimalista para preservação de acervos locais em Flash Player e retroemulação. Desenvolvido em Electron, o Elementista Flash Vault integra emuladores nativos de consoles clássicos (Atari, Mega Drive, SNES) e um player para arquivos swf, com gerenciamento de favoritos, suporte a dois jogadores e interface customizada.
 
 <p align="center">
   <img src="logo-escudo.png" alt="Elementista Flash Vault Logo" width="140"/>
