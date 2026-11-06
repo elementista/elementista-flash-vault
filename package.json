@@ -1,6 +1,6 @@
 {
   "name": "elementista-flash-vault",
-  "version": "1.0.0",
+  "version": "1.11.5",
   "description": "Cofre portátil e minimalista para preservação de acervos locais em Flash Player e Retroemulação",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   "author": "pacjay / elementista",
   "license": "ISC",
   "devDependencies": {
-    "electron": "9.4.4",
+    "electron": "11.5.0",
     "electron-builder": "^24.13.3"
   },
   "dependencies": {
@@ -21,15 +21,23 @@
   "build": {
     "appId": "com.elementista.flash.vault",
     "productName": "ElementistaFlashVault",
-    "directories": { "buildResources": "build" },
+    "directories": {
+      "buildResources": "build"
+    },
     "linux": {
-      "target": ["AppImage"],
+      "target": [
+        "AppImage"
+      ],
       "category": "Game",
       "icon": "build/icon.png",
-      "executableArgs": ["--no-sandbox"]
+      "executableArgs": [
+        "--no-sandbox"
+      ]
     },
     "win": {
-      "target": ["portable"],
+      "target": [
+        "portable"
+      ],
       "icon": "build/icon.ico"
     },
     "files": [
@@ -47,12 +55,18 @@
       "build/**/*"
     ],
     "extraResources": [
-      { "from": "flashver", "to": "flashver" }
+      {
+        "from": "flashver",
+        "to": "flashver"
+      }
     ],
     "asar": true,
     "asarUnpack": [
       "binarios/**/*"
     ]
+  },
+  "allowScripts": {
+    "electron@11.5.0": true,
+    "electron@1.8.8": true
   }
 }
-

@@ -71,7 +71,7 @@ function configurarMenuSistemaPTBR(win) {
                 {
                     label: 'Sobre o Elementista Flash Vault',
                     click(item, focusedWindow) {
-                        const infoVersao = isPackaged ? app.getVersion() : '1.0.0';
+                        const infoVersao = isPackaged ? app.getVersion() : '1.11.5';
                         const sistemaOperacional = process.platform === 'win32' ? 'Windows' : 'Linux';
 
                         dialog.showMessageBox(focusedWindow, {
@@ -100,7 +100,7 @@ function criarJanela() {
     let win = new BrowserWindow({
         width: 1280,
         height: 720,
-        title: "Elementista Flash Vault v1.0.0",
+        title: "Elementista Flash Vault v1.11.5",
         icon: path.join(__dirname, 'logo-escudo.png'),
         webPreferences: {
             nodeIntegration: true,
